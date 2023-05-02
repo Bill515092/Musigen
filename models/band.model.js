@@ -8,26 +8,8 @@ const bandSchema = new Schema(
     },
     members: [
       {
-        name: {
-          type: String,
-          required: true,
-        },
-        role: {
-          type: String,
-          required: true,
-        },
-        yearsOfExperience: {
-          type: Number,
-          required: true,
-        },
-        favouriteGenre: {
-          type: String,
-          required: true,
-        },
-        favouriteBand: {
-          type: String,
-          required: true,
-        },
+        type: Schema.Types.ObjectId,
+        ref: "musician",
       },
     ],
     genre: {

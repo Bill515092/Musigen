@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Musician = require("../models/musician.model");
+const Band = require("../models/band.model");
 
 router.get("/createMusician", (req, res, next) => {
   res.render("profile/createMusician");
@@ -50,6 +51,12 @@ router.post("/editMusician/:musicianId", async (req, res, next) => {
 
 router.get("/createBand", (req, res, next) => {
   res.render("profile/createBand");
+});
+
+router.post("/createBand", async (req, res, next) => {
+  const createdBand = await Band.create(req.body);
+  console.log("new band", createdBand);
+  res.redirect("/profile/bandList");
 });
 
 router.get("/bandList", (req, res, next) => {
