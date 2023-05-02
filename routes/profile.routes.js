@@ -46,4 +46,14 @@ router.post("/editMusician/:musicianId", async (req, res, next) => {
   res.redirect("/profile/musicianList");
 });
 
+//Band routes
+
+router.get("/createBand", (req, res, next) => {
+  res.render("profile/createBand");
+});
+
+router.get("/bandList", (req, res, next) => {
+  res.render("profile/bandList");
+});
+
 module.exports = router;
