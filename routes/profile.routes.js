@@ -49,8 +49,9 @@ router.post("/editMusician/:musicianId", async (req, res, next) => {
 
 //Band routes
 
-router.get("/createBand", (req, res, next) => {
-  res.render("profile/createBand");
+router.get("/createBand", async (req, res, next) => {
+  const allMusicians = await Musician.find();
+  res.render("profile/createBand", { allMusicians });
 });
 
 router.post("/createBand", async (req, res, next) => {

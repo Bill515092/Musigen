@@ -19,6 +19,8 @@ const bandSchema = new Schema(
     dateFounded: {
       type: Date,
       required: true,
+      get: (date) => date.toISOString().substr(0, 10),
+      set: (dateString) => new Date(dateString),
     },
   },
   {
