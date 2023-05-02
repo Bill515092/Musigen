@@ -9,7 +9,7 @@ const bandSchema = new Schema(
     members: [
       {
         type: Schema.Types.ObjectId,
-        ref: "musician",
+        ref: "Musician",
       },
     ],
     genre: {
@@ -35,6 +35,6 @@ const bandSchema = new Schema(
   }
 );
 
-const Band = model("Band", bandSchema);
+const Band = model("band", bandSchema);
 
 module.exports = Band;

@@ -61,7 +61,8 @@ router.post("/createBand", async (req, res, next) => {
 });
 
 router.get("/bandList", async (req, res, next) => {
-  res.render("profile/bandList");
+  const allBands = await Band.find().populate("members");
+  res.render("profile/bandList", { allBands });
 });
 
 module.exports = router;

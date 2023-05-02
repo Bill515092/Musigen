@@ -1,1 +1,12 @@
 <h1>Band List</h1>
+<% allBands.forEach((band) => { %>
+<h2>Name: <%- band.name %></h2>
+
+<h3>Members:</h3>
+<% band.members.forEach((element) => { %>
+<h4><%- element.name %></h4>
+<% }) %>
+
+<h3>Genre: <%- band.genre %></h3>
+<h3>Date Founded: <%- band.dateFounded %></h3>
+<% }) %>
