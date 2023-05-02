@@ -19,8 +19,15 @@ const bandSchema = new Schema(
     dateFounded: {
       type: Date,
       required: true,
-      get: (date) => date.toISOString().substr(0, 10),
-      set: (dateString) => new Date(dateString),
+      get: function (date) {
+        const day = ("0" + date.getDate()).slice(-2);
+        const month = ("0" + (date.getMonth() + 1)).slice(-2);
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+      },
+      set: function (dateString) {
+        return new Date(dateString);
+      },
     },
   },
   {

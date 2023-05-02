@@ -60,7 +60,7 @@ router.post("/createBand", async (req, res, next) => {
   res.redirect("/profile/bandList");
 });
 
-router.get("/bandList", (req, res, next) => {
+router.get("/bandList", async (req, res, next) => {
   res.render("profile/bandList");
 });
 

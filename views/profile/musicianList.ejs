@@ -1,10 +1,10 @@
 <h1>Musician List</h1>
 <% allMusicians.forEach(element => { %>
-<h2><%- element.name %></h2>
-<h3><%- element.role %></h3>
-<h3><%- element.yearsOfExperience %></h3>
-<h3><%- element.favouriteGenre %></h3>
-<h3><%- element.favouriteBand %></h3>
+<h2>Name: <%- element.name %></h2>
+<h3>Role: <%- element.role %></h3>
+<h3>Years of Experience: <%- element.yearsOfExperience %></h3>
+<h3>Favourite Genre: <%- element.favouriteGenre %></h3>
+<h3>Favourite Band: <%- element.favouriteBand %></h3>
 <a href="/profile/editMusician/<%- element._id %>"><button>Edit</button></a>
 <a href="/profile/delete/<%- element._id %>"><button>Delete</button></a>
 <% }); %>
