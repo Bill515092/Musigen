@@ -106,4 +106,11 @@ router.get("/delete/band/:bandId", async (req, res, next) => {
     console.log(error);
   }
 });
+router.get("/editBand/:bandId", async (req, res, next) => {
+  const bandToUpdate = await Band.findById(req.params.bandId);
+  const allMembers = await Musician.find();
+  console.log(bandToUpdate);
+  res.render("profile/editBand", { bandToUpdate, allMembers });
+});
+
 module.exports = router;
