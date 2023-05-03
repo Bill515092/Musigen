@@ -6,7 +6,11 @@
     <a href="/profile/bandList">Band List</a>
   </nav>
   <h1>Create Musician</h1>
-  <form action="/profile/createMusician" method="post">
+  <form
+    action="/profile/createMusician"
+    method="post"
+    enctype="multipart/form-data"
+  >
     <label for="name">Name:</label>
     <input
       type="text"
@@ -46,6 +50,8 @@
       name="favouriteBand"
       style="margin-bottom: 10px"
     /><br />
+
+    <input type="file" name="imageUrl" accept="image/png, image/jpg" />
 
     <button type="submit">Save Profile</button>
   </form>

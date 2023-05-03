@@ -24,6 +24,7 @@ const musicianSchema = new Schema(
       type: String,
       required: true,
     },
+    image: String,
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

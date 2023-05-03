@@ -6,6 +6,7 @@
 </nav>
 <h1>Musician List</h1>
 <% allMusicians.forEach(element => { %>
+<img src="<%-element.image%>" />
 <h2>Name: <%- element.name %></h2>
 <h3>Role: <%- element.role %></h3>
 <h3>Years of Experience: <%- element.yearsOfExperience %></h3>

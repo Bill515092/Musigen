@@ -2,23 +2,39 @@ const express = require("express");
 const router = express.Router();
 const Musician = require("../models/musician.model");
 const Band = require("../models/band.model");
+const { isLoggedIn } = require("../middleware/route.guard");
+const uploader = require("../middleware/cloudinary.config.js");
 
-router.get("/createMusician", (req, res, next) => {
+router.get("/createMusician", isLoggedIn, (req, res, next) => {
   res.render("profile/createMusician");
 });
 
-router.post("/createMusician", async (req, res, next) => {
-  try {
-    const createdMusician = await Musician.create(req.body);
-    console.log("new musician", createdMusician);
-    res.redirect("/profile/musicianList");
-  } catch (error) {
-    console.log(error);
+router.post(
+  "/createMusician",
+  uploader.single("imageUrl"),
+  async (req, res, next) => {
+    try {
+      const { name, role, yearsOfExperience, favouriteGenre, favouriteBand } =
+        req.body;
+      const image = req.file.path;
+      const createdMusician = await Musician.create({
+        name,
+        role,
+        yearsOfExperience,
+        favouriteGenre,
+        favouriteBand,
+        image,
+      });
+      console.log("new musician", createdMusician);
+      res.redirect("/profile/musicianList");
+    } catch (error) {
+      console.log(error);
+    }
+    console.log(req.body);
   }
-  console.log(req.body);
-});
+);
 
-router.get("/MusicianList", async (req, res, next) => {
+router.get("/MusicianList", isLoggedIn, async (req, res, next) => {
   try {
     const allMusicians = await Musician.find();
     res.render("profile/musicianList", { allMusicians });
@@ -27,7 +43,7 @@ router.get("/MusicianList", async (req, res, next) => {
   }
 });
 
-router.get("/delete/:musicianId", async (req, res, next) => {
+router.get("/delete/:musicianId", isLoggedIn, async (req, res, next) => {
   try {
     const { musicianId } = req.params;
     await Musician.findByIdAndDelete(musicianId);
@@ -38,7 +54,7 @@ router.get("/delete/:musicianId", async (req, res, next) => {
   }
 });
 
-router.get("/editMusician/:musicianId", async (req, res, next) => {
+router.get("/editMusician/:musicianId", isLoggedIn, async (req, res, next) => {
   try {
     const musicianToUpdate = await Musician.findById(
       req.params.musicianId
@@ -69,7 +85,7 @@ router.post("/editMusician/:musicianId", async (req, res, next) => {
 
 // //Band routes ------------------------------- ****
 
-router.get("/createBand", async (req, res, next) => {
+router.get("/createBand", isLoggedIn, async (req, res, next) => {
   try {
     const allMusicians = await Musician.find();
     res.render("profile/createBand", { allMusicians });
@@ -80,6 +96,7 @@ router.get("/createBand", async (req, res, next) => {
 
 router.post("/createBand", async (req, res, next) => {
   try {
+    // const image = req.file.path;
     const createdBand = await Band.create(req.body);
     console.log("new band", createdBand);
     res.redirect("/profile/bandList");
@@ -88,7 +105,7 @@ router.post("/createBand", async (req, res, next) => {
   }
 });
 
-router.get("/bandList", async (req, res, next) => {
+router.get("/bandList", isLoggedIn, async (req, res, next) => {
   try {
     const allBands = await Band.find().populate("members");
     res.render("profile/bandList", { allBands });
@@ -97,7 +114,7 @@ router.get("/bandList", async (req, res, next) => {
   }
 });
 
-router.get("/delete/band/:bandId", async (req, res, next) => {
+router.get("/delete/band/:bandId", isLoggedIn, async (req, res, next) => {
   try {
     const { bandId } = req.params;
     await Band.findByIdAndDelete(bandId);
@@ -106,7 +123,7 @@ router.get("/delete/band/:bandId", async (req, res, next) => {
     console.log(error);
   }
 });
-router.get("/editBand/:bandId", async (req, res, next) => {
+router.get("/editBand/:bandId", isLoggedIn, async (req, res, next) => {
   try {
     const bandToUpdate = await Band.findById(req.params.bandId).populate(
       "members"
