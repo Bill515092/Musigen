@@ -17,17 +17,8 @@ const bandSchema = new Schema(
       required: true,
     },
     dateFounded: {
-      type: Date,
+      type: Number,
       required: true,
-      get: function (date) {
-        const day = ("0" + date.getDate()).slice(-2);
-        const month = ("0" + (date.getMonth() + 1)).slice(-2);
-        const year = date.getFullYear();
-        return `${day}-${month}-${year}`;
-      },
-      set: function (dateString) {
-        return new Date(dateString);
-      },
     },
   },
   {

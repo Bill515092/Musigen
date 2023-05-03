@@ -107,10 +107,33 @@ router.get("/delete/band/:bandId", async (req, res, next) => {
   }
 });
 router.get("/editBand/:bandId", async (req, res, next) => {
-  const bandToUpdate = await Band.findById(req.params.bandId);
-  const allMembers = await Musician.find();
-  console.log(bandToUpdate);
-  res.render("profile/editBand", { bandToUpdate, allMembers });
+  try {
+    const bandToUpdate = await Band.findById(req.params.bandId).populate(
+      "members"
+    );
+    const allMembers = await Musician.find();
+    console.log(bandToUpdate);
+    res.render("profile/editBand", { bandToUpdate, allMembers });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post("/editBand/:bandId", async (req, res, next) => {
+  try {
+    const bandId = req.params.bandId;
+    const bandToUpdate = await Band.findByIdAndUpdate(
+      bandId,
+      { members: req.body.members },
+      {
+        new: true,
+      }
+    );
+    console.log("Updated Band", bandToUpdate);
+    res.redirect("/profile/bandList");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;
