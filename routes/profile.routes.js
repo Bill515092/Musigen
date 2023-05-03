@@ -66,22 +66,29 @@ router.get("/editMusician/:musicianId", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post("/editMusician/:musicianId", async (req, res, next) => {
-  try {
-    const { musicianId } = req.params;
-    const updatedMusician = await Musician.findByIdAndUpdate(
-      musicianId,
-      req.body,
-      {
-        new: true,
-      }
-    );
-    console.log("new Musician", updatedMusician);
-    res.redirect("/profile/musicianList");
-  } catch (error) {
-    console.log(error);
+router.post(
+  "/editMusician/:musicianId",
+  uploader.single("imageUrl"),
+  async (req, res, next) => {
+    try {
+      const { name, role, yearsOfExperience, favouriteGenre, favouriteBand } =
+        req.body;
+      const image = req.file.path;
+      const { musicianId } = req.params;
+      const updatedMusician = await Musician.findByIdAndUpdate(
+        musicianId,
+        { name, role, yearsOfExperience, favouriteGenre, favouriteBand, image },
+        {
+          new: true,
+        }
+      );
+      console.log("new Musician", updatedMusician);
+      res.redirect("/profile/musicianList");
+    } catch (error) {
+      console.log(error);
+    }
   }
-});
+);
 
 // //Band routes ------------------------------- ****
 
