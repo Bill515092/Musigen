@@ -22,9 +22,9 @@ MVP:
 Backlog:
 • Having an image upload on the band creator form.
 
-• Adding audio
+• Adding audio.
 
-Task:
+• Date selector.
 
 Links:
 Trello
