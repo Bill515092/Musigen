@@ -3,25 +3,29 @@
     <h1>Log in</h1>
     <br />
     <div class="signup-container">
-      <form class="signup-form" action="/auth/login" method="post">
+      <form class="signup-form" action="/auth/login" method="post" class="mb-3">
         <input
           type="username"
           name="username"
           value=""
           placeholder="Enter your username"
+          class="form-control"
         />
         <input
           type="password"
           name="password"
           value=""
           placeholder="Enter your password"
+          class="form-control"
         />
 
-        <input class="btn-form" type="submit" value="Log in" />
+        <input class="btn btn-outline-light" type="submit" value="Log in" />
         <% if(typeof errorMessage !== 'undefined') { %>
         <p style="color: red"><%= errorMessage %></p>
         <% } %>
       </form>
+
+      <a href="/"> <button class="btn btn-outline-light">Home Page</button></a>
     </div>
   </div>
 </div>

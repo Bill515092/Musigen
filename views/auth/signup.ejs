@@ -3,13 +3,19 @@
     <h1>Signup</h1>
     <br />
     <div class="signup-container">
-      <form class="signup-form" action="/auth/signup" method="post">
+      <form
+        class="signup-form"
+        action="/auth/signup"
+        method="post"
+        class="mb-3"
+      >
         <input
           type="username"
           name="username"
           value="<% if(typeof errorMessage !== 'undefined') { %><%= data.username %><% } %>"
           required="true"
           placeholder="Enter your username"
+          class="form-control"
         />
         <input
           type="password"
@@ -17,16 +23,15 @@
           value=""
           required="true"
           placeholder="Enter your password"
+          class="form-control"
         />
 
-        <input class="btn-form" type="submit" value="Signup" />
+        <input class="btn btn-outline-light" type="submit" value="Signup" />
       </form>
-      <br />
-      <br />
+      <a href="/auth/login"
+        ><button class="btn btn-outline-light">Go to log in page</button></a
+      >
 
-      <button class="btn">
-        <a href="/auth/login">Go to log in page</a>
-      </button>
       <% if(typeof errorMessage !== 'undefined') { %>
       <p style="color: red"><%= errorMessage %></p>
       <% } %>
