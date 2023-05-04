@@ -1,6 +1,9 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  background: #0cbaba;
+  background: linear-gradient(90deg, #0cbaba 0%, #380036 74%);
 }
 
 a {

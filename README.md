@@ -1,7 +1,5 @@
 # Musigen
 
-Project's name: Musigen
-
 Description: A Fullstack app designed for musicians to create a user profile that matches their skill (guitarist, bassist, drummer and vocalist). There is also a personalisation element, allowing users to add details such as years of experience, favourite genre and favourite band. These profiles can be viewed in a seperate page, where they can be edited and deleted if needed.
 
 Expanding on the above, groups of four users can be grouped together in bands. These band profiles can also be personalised with detials such as name, band genre and year founded. As with the user profiles, these too can be viewed in a seperate band list page, where they can be edited and deleted as and when needed.
