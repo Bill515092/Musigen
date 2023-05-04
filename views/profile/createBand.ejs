@@ -29,52 +29,54 @@
 </nav>
 
 <h1>Create Band</h1>
-<form action="/profile/createBand" method="post">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" style="margin-bottom: 10px" /><br />
+<form action="/profile/createBand" method="post" class="mb-3">
+  <label for="name" class="form-label">Name:</label>
+  <input type="text" id="name" name="name" style="margin-bottom: 10px" class="form-control"/><br />
 
-  <label for="members">Members:</label>
-  <select id="members" Name="members" style="margin-bottom: 10px">
+  <label for="members" class="form-label">Members:</label>
+  <select id="members" Name="members" style="margin-bottom: 10px" class="form-control">
     <% allMusicians.forEach(element => { %>
     <option value="<%-element._id%>"><%-element.name%></option>
     <% }); %>
   </select>
 
-  <select id="members" Name="members" style="margin-bottom: 10px">
+  <select id="members" Name="members" style="margin-bottom: 10px" class="form-control">
     <% allMusicians.forEach(element => { %>
     <option value="<%-element._id%>"><%-element.name%></option>
     <% }); %>
   </select>
 
-  <select id="members" Name="members" style="margin-bottom: 10px">
+  <select id="members" Name="members" style="margin-bottom: 10px" class="form-control">
     <% allMusicians.forEach(element => { %>
     <option value="<%-element._id%>"><%-element.name%></option>
     <% }); %>
   </select>
 
-  <select id="members" Name="members" style="margin-bottom: 10px">
+  <select id="members" Name="members" style="margin-bottom: 10px" class="form-control">
     <% allMusicians.forEach(element => { %>
     <option value="<%-element._id%>"><%-element.name%></option>
     <% }); %>
   </select>
   <br />
 
-  <label for="genre">Band Genre:</label>
+  <label for="genre" class="form-label">Band Genre:</label>
   <input
     type="text"
     id="genre"
     name="genre"
     style="margin-bottom: 10px"
+    class="form-control"
   /><br />
 
-  <label for="dateFounded">Date Founded:</label>
+  <label for="dateFounded" class="form-label">Date Founded:</label>
   <input
     type="text"
     id="dateFounded"
     name="dateFounded"
-    placeholder="DD.MM.YYYY"
+    placeholder="DDMMYYYY"
     style="margin-bottom: 10px"
+    class="form-control"
   /><br />
 
-  <button type="submit">Create Band!</button>
+  <button type="submit" class="btn btn-outline-light">Create Band!</button>
 </form>

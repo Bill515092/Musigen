@@ -28,14 +28,16 @@
 </div>
 </nav>
 
+<div class="grid gap-3">
 <h1>Musician List</h1>
 <% allMusicians.forEach(element => { %>
 <img src="<%-element.image%>" />
-<h2>Name: <%- element.name %></h2>
-<h3>Role: <%- element.role %></h3>
-<h3>Years of Experience: <%- element.yearsOfExperience %></h3>
-<h3>Favourite Genre: <%- element.favouriteGenre %></h3>
-<h3>Favourite Band: <%- element.favouriteBand %></h3>
-<a href="/profile/editMusician/<%- element._id %>"><button>Edit</button></a>
-<a href="/profile/delete/<%- element._id %>"><button>Delete</button></a>
+<h5 class="p-2 g-col-6">Name: <%- element.name %></h4>
+<p>Role: <%- element.role %></p>
+<p>Years of Experience: <%- element.yearsOfExperience %></p>
+<p>Favourite Genre: <%- element.favouriteGenre %></p>
+<p>Favourite Band: <%- element.favouriteBand %></p>
+<a href="/profile/editMusician/<%- element._id %>"><button class="btn btn-outline-light">Edit</button></a>
+<a href="/profile/delete/<%- element._id %>"><button class="btn btn-outline-light">Delete</button></a>
 <% }); %>
+</div>

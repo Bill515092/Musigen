@@ -28,18 +28,20 @@
 </div>
 </nav>
 
+<div class="grid gap-3">
 <h1>Band List</h1>
 <% allBands.forEach((band) => { %>
-<h2>Name: <%- band.name %></h2>
+<h5>Name: <%- band.name %></h5>
 
-<h3>Members:</h3>
+<h5>Members:</h5>
 <% band.members.forEach((element) => { %>
-<h4><%- element.name %> : <%- element.role %></h4>
+<p><%- element.name %> : <%- element.role %></p>
 
 <% }) %>
 
-<h3>Genre: <%- band.genre %></h3>
-<h3>Date Founded: <%- band.dateFounded %></h3>
-<a href="/profile/delete/band/<%- band._id %>"><button>Delete</button></a>
-<a href="/profile/editBand/<%- band._id %>"><button>Edit</button></a>
+<p>Genre: <%- band.genre %></p>
+<p>Date Founded: <%- band.dateFounded %></p>
+<a href="/profile/delete/band/<%- band._id %>"><button class="btn btn-outline-light">Delete</button></a>
+<a href="/profile/editBand/<%- band._id %>"><button class="btn btn-outline-light">Edit</button></a>
 <% }) %>
+</div>
