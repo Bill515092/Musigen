@@ -143,21 +143,31 @@ router.get("/editBand/:bandId", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post("/editBand/:bandId", async (req, res, next) => {
-  try {
-    const bandId = req.params.bandId;
-    const bandToUpdate = await Band.findByIdAndUpdate(
-      bandId,
-      { members: req.body.members },
-      {
-        new: true,
-      }
-    );
-    console.log("Updated Band", bandToUpdate);
-    res.redirect("/profile/bandList");
-  } catch (error) {
-    console.log(error);
+router.post(
+  "/editBand/:bandId",
+  uploader.single("imageUrl"),
+  async (req, res, next) => {
+    try {
+      const bandId = req.params.bandId;
+      const bandToUpdate = await Band.findByIdAndUpdate(
+        bandId,
+        {
+          members: req.body.members,
+          name: req.body.name,
+          genre: req.body.genre,
+          dateFounded: req.body.dateFounded,
+        },
+        {
+          new: true,
+        }
+      );
+      console.log(req.body);
+      console.log("Updated Band", bandToUpdate);
+      res.redirect("/profile/bandList");
+    } catch (error) {
+      console.log(error);
+    }
   }
-});
+);
 
 module.exports = router;
